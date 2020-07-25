@@ -54,14 +54,13 @@ endif()
 if(XPRESS_FOUND AND NOT TARGET XPRESS::XPRESS)
   add_library(XPRESS::XPRESS UNKNOWN IMPORTED)
 
-  set_target_properties(XPRESS::XPRESS PROPERTIES
-    INTERFACE_INCLUDE_DIRECTORIES "${XPRESS_INCLUDE_DIRS}")
-
   if(UNIX)
     set_target_properties(XPRESS::XPRESS PROPERTIES
+      INTERFACE_INCLUDE_DIRECTORIES "${XPRESS_ROOT}/include"
       IMPORTED_LOCATION ${XPRESS_ROOT}/lib/libxprs.so)
   elseif(MSVC)
     set_target_properties(XPRESS::XPRESS PROPERTIES
+      INTERFACE_INCLUDE_DIRECTORIES "${XPRESS_ROOT}\\include"
       IMPORTED_LOCATION ${XPRESS_ROOT}/lib/xprs.lib)
   endif()
 endif()
